@@ -1,0 +1,7 @@
+EVERY-VISIT MONTE CARLO
+
+A: visits=3, average_return=-0.333333
+B: visits=2, average_return=0.000000
+C: visits=1, average_return=0.000000
+D: visits=1, average_return=0.000000
+E: visits=1, average_return=0.000000

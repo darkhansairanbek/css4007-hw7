@@ -1,0 +1,137 @@
+HW7 PART C — COMPLETE PAPER REPLAY
+============================================================
+
+1. MODEL-BASED LEARNING
+OBSERVED STATE-ACTION COUNTS
+('A', 1): 3
+('B', 0): 2
+('C', 1): 1
+('D', 1): 1
+('E', 0): 1
+
+TRANSITION MODEL
+A, action=1, next=B: count=2, P=0.6667, mean reward=0.0000
+A, action=1, next=END: count=1, P=0.3333, mean reward=-1.0000
+B, action=0, next=END: count=2, P=1.0000, mean reward=0.0000
+C, action=1, next=D: count=1, P=1.0000, mean reward=0.0000
+D, action=1, next=E: count=1, P=1.0000, mean reward=0.0000
+E, action=0, next=END: count=1, P=1.0000, mean reward=0.0000
+
+SYNCHRONOUS VALUE ITERATIONS
+
+V1
+V(A) = -0.333333
+V(B) = 0.000000
+V(C) = 0.000000
+V(D) = 0.000000
+V(E) = 0.000000
+
+V2
+V(A) = -0.333333
+V(B) = 0.000000
+V(C) = 0.000000
+V(D) = 0.000000
+V(E) = 0.000000
+
+2. EVERY-VISIT MONTE CARLO
+EVERY-VISIT MONTE CARLO
+=============================================
+
+Game 1
+State A: return = 1.0000
+State B: return = 1.0000
+
+Game 2
+State A: return = -1.0000
+
+Game 3
+State C: return = 0.0000
+State D: return = 0.0000
+State E: return = 0.0000
+
+Game 4
+State A: return = -1.0000
+State B: return = -1.0000
+
+FINAL MONTE CARLO VALUES
+V(A) = -0.333333, visits = 3, returns = [1.0, -1.0, -1.0]
+V(B) = 0.000000, visits = 2, returns = [1.0, -1.0]
+V(C) = 0.000000, visits = 1, returns = [0.0]
+V(D) = 0.000000, visits = 1, returns = [0.0]
+V(E) = 0.000000, visits = 1, returns = [0.0]
+
+3. TD(0)
+TD(0) LEARNING
+==================================================
+
+PASS 1
+A -> B: old=0.000000, target=0.000000, new=0.000000
+B -> END: old=0.000000, target=1.000000, new=0.100000
+A -> END: old=0.000000, target=-1.000000, new=-0.100000
+C -> D: old=0.000000, target=0.000000, new=0.000000
+D -> E: old=0.000000, target=0.000000, new=0.000000
+E -> END: old=0.000000, target=0.000000, new=0.000000
+A -> B: old=-0.100000, target=0.100000, new=-0.080000
+B -> END: old=0.100000, target=-1.000000, new=-0.010000
+
+Values after pass:
+V(A) = -0.080000
+V(B) = -0.010000
+V(C) = 0.000000
+V(D) = 0.000000
+V(E) = 0.000000
+
+PASS 2
+A -> B: old=-0.080000, target=-0.010000, new=-0.073000
+B -> END: old=-0.010000, target=1.000000, new=0.091000
+A -> END: old=-0.073000, target=-1.000000, new=-0.165700
+C -> D: old=0.000000, target=0.000000, new=0.000000
+D -> E: old=0.000000, target=0.000000, new=0.000000
+E -> END: old=0.000000, target=0.000000, new=0.000000
+A -> B: old=-0.165700, target=0.091000, new=-0.140030
+B -> END: old=0.091000, target=-1.000000, new=-0.018100
+
+Values after pass:
+V(A) = -0.140030
+V(B) = -0.018100
+V(C) = 0.000000
+V(D) = 0.000000
+V(E) = 0.000000
+
+4. Q-LEARNING
+Q-LEARNING
+=======================================================
+
+PASS 1
+State=A, action=1, next=B: old Q=0.000000, target=0.000000, new Q=0.000000
+State=B, action=0, next=END: old Q=0.000000, target=1.000000, new Q=0.100000
+State=A, action=1, next=END: old Q=0.000000, target=-1.000000, new Q=-0.100000
+State=C, action=1, next=D: old Q=0.000000, target=0.000000, new Q=0.000000
+State=D, action=1, next=E: old Q=0.000000, target=0.000000, new Q=0.000000
+State=E, action=0, next=END: old Q=0.000000, target=0.000000, new Q=0.000000
+State=A, action=1, next=B: old Q=-0.100000, target=0.100000, new Q=-0.080000
+State=B, action=0, next=END: old Q=0.100000, target=-1.000000, new Q=-0.010000
+
+Q-values after pass:
+A: Stick=0.000000, Hit=-0.080000
+B: Stick=-0.010000, Hit=0.000000
+C: Stick=0.000000, Hit=0.000000
+D: Stick=0.000000, Hit=0.000000
+E: Stick=0.000000, Hit=0.000000
+
+PASS 2
+State=A, action=1, next=B: old Q=-0.080000, target=0.000000, new Q=-0.072000
+State=B, action=0, next=END: old Q=-0.010000, target=1.000000, new Q=0.091000
+State=A, action=1, next=END: old Q=-0.072000, target=-1.000000, new Q=-0.164800
+State=C, action=1, next=D: old Q=0.000000, target=0.000000, new Q=0.000000
+State=D, action=1, next=E: old Q=0.000000, target=0.000000, new Q=0.000000
+State=E, action=0, next=END: old Q=0.000000, target=0.000000, new Q=0.000000
+State=A, action=1, next=B: old Q=-0.164800, target=0.091000, new Q=-0.139220
+State=B, action=0, next=END: old Q=0.091000, target=-1.000000, new Q=-0.018100
+
+Q-values after pass:
+A: Stick=0.000000, Hit=-0.139220
+B: Stick=-0.018100, Hit=0.000000
+C: Stick=0.000000, Hit=0.000000
+D: Stick=0.000000, Hit=0.000000
+E: Stick=0.000000, Hit=0.000000
